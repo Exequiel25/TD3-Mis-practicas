@@ -1,3 +1,11 @@
 #!/usr/bin/env sh
-wget https://github.com/td3-frm/practica/raw/master/02-procesos/procesos_c.zip
-unzip procesos_c.zip
+#wget https://github.com/td3-frm/practica/raw/master/02-procesos/procesos_c.zip
+#unzip procesos_c.zip
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_01.c
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_01.py
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_02.c
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_02.py
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_03.c
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_05.c
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_09.c
+wget https://github.com/td3-frm/practica/raw/master/03-procesos/proc_15.c
