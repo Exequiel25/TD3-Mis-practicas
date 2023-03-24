@@ -1,5 +1,5 @@
 #
-# TP Procesos, Ejercicio 7
+# TP Procesos, Ejercicio 7 de la v011
 #
 import os
 import multiprocessing
