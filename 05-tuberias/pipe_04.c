@@ -32,7 +32,7 @@ int main (){
       exit(-1);
    
    // cerramos el descriptor de lectura
-   // close(ipc[0]);
+   close(ipc[0]);
    
    // creamos el proceso hijo
    switch (fork()){ 
@@ -52,7 +52,7 @@ int main (){
          exit(0);
          
       default:
-         strncpy(buff, DATA, sizeof(DATA));
+         memcpy(buff, DATA, sizeof(DATA));
          write(ipc[1], buff, sizeof(DATA));
          wait(NULL);      
          exit(0);      
