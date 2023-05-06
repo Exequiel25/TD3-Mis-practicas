@@ -8,19 +8,21 @@
 
 /*
 void manejador_senial(int a){
-   
+
 }
 */
 
-int main ()
+int main()
 {
+  // manejador
   signal(SIGKILL, SIG_IGN);
   // Siguiente instrucción corresponde al ejercicio 3
-  signal(SIGSTOP, SIG_IGN);  //Ctrl + Z
-   
-   printf("Proceso PID = %d\n", getpid());   
-   
-   while(true);
-   
-   exit(0);
+  signal(SIGSTOP, SIG_IGN); // Ctrl + Z
+
+  printf("Proceso PID = %d\n", getpid());
+
+  while (true)
+    ;
+
+  exit(0);
 }
