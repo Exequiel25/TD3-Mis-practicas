@@ -1,0 +1,12 @@
+1) Descargue los siguientes 2 archivos en un mismo directorio:
+padre.c : https://nube.ingenieria.uncuyo.edu.ar/s/gbxbSWbePfrRnsL
+hijo.o : https://nube.ingenieria.uncuyo.edu.ar/s/W5qgYjCgPLFxRnF
+2) Modifique el archivo padre.c para que envíe una señal SIGUSR1 al proceso hijo.
+3) Ambos archivos se compilan con el siguiente comando en consola:
+> gcc -c padre.c && gcc -O0 hijo.o padre.o -o padre
+4) El binario generado por el comando anterior se ejecuta en consola con:
+> ./padre
+5) Cuando el proceso hijo reciba la señal indicada, imprimirá por consola dos líneas:
+Hijo recibe SIGUSR1
+El resultado del ejercicio es: XXX
+6) Copie el número de 3 cifras XXX en la casilla de abajo. Este número es la respuesta del ejercicio.
