@@ -37,8 +37,7 @@ void tarea3(void *p);
 // Función principal
 int main(void)
 {
-   // Inicializar hardware
-   Board_Init();
+   printf("Ejercicio 5 - RTOS 1\r\n");
 
    // Crear tarea 1
    xTaskCreate(tarea1,                       // Función de la tarea a ejecutar

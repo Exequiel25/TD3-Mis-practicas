@@ -30,8 +30,6 @@ void tarea2(void *p);
 // Funcion principal
 int main(void)
 {
-   // Inicializaciones
-   Board_Init();
    printf("Ejercicio 2 - RTOS 1\r\n");
 
    // Crear tarea 1

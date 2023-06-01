@@ -35,8 +35,6 @@ void vApplicationIdleHook(void);
 // Funcion principal
 int main(void)
 {
-   // Inicializaciones
-   Board_Init();
    printf("Ejercicio 4 - RTOS 1\r\n");
 
    // Crear tareas
@@ -72,19 +70,20 @@ void tarea(void *p)
 void vApplicationIdleHook(void)
 {
 
-TickType_t xLastWakeTime = xTaskGetTickCount();
-TickType_t xWakeTime;
+   TickType_t xLastWakeTime = xTaskGetTickCount();
+   TickType_t xWakeTime;
 
    while (1)
    {
-xWakeTime = xTaskGetTickCount();
-	if(xWakeTime - xLastWakeTime > 300){
-xLastWakeTime = xWakeTime;
-      // Cambiar estado del led azul
-      Board_LED_Toggle(LED_AZUL);
+      xWakeTime = xTaskGetTickCount();
+      if (xWakeTime - xLastWakeTime > 300)
+      {
+         xLastWakeTime = xWakeTime;
+         // Cambiar estado del led azul
+         Board_LED_Toggle(LED_AZUL);
 
-      // Indicar por puerto serie que la tarea esta en ejecucion
-      printf("Tarea Idle en ejecucion\r\n");
-}
+         // Indicar por puerto serie que la tarea esta en ejecucion
+         printf("Tarea Idle en ejecucion\r\n");
+      }
    }
 }

@@ -33,8 +33,6 @@ TaskHandle_t tarea2_handle;
 // Funcion principal
 int main(void)
 {
-   // Inicializaciones
-   Board_Init();
    printf("Ejercicio 3 - RTOS 1\r\n");
 
    // Crear tareas
