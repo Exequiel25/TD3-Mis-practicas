@@ -24,8 +24,8 @@ BOARD: EDU CIAA
 #define LED_VERDE 5
 
 // Prototipos de funciones
-void tarea1(void *p);
-void tarea2(void *p);
+void vTarea1(void *p);
+void vTarea2(void *p);
 
 // Funcion principal
 int main(void)
@@ -33,8 +33,8 @@ int main(void)
    printf("Ejercicio 1 - RTOS 1\r\n");
 
    // Crear tareas
-   xTaskCreate(tarea1, (const char *)"tarea1", configMINIMAL_STACK_SIZE * 2, NULL, TAREA1_PRIORIDAD, NULL);
-   xTaskCreate(tarea2, (const char *)"tarea2", configMINIMAL_STACK_SIZE * 2, NULL, TAREA2_PRIORIDAD, NULL);
+   xTaskCreate(vTarea2, (const char *)"tarea2", configMINIMAL_STACK_SIZE, NULL, TAREA2_PRIORIDAD, NULL);
+   xTaskCreate(vTarea1, (const char *)"tarea1", configMINIMAL_STACK_SIZE, NULL, TAREA1_PRIORIDAD, NULL);
 
    // Iniciar scheduler
    vTaskStartScheduler();
@@ -43,14 +43,12 @@ int main(void)
    while (1)
    {
    }
-   // NO DEBE LLEGAR NUNCA AQUI, debido a que a este programa se ejecuta
-   // directamenteno sobre un microcontrolador y no es llamado por ningun
-   // Sistema Operativo, como en el caso de un programa para PC.
+   // NO DEBE LLEGAR NUNCA AQUI
    return 0;
 }
 
 // Implementacion de funciones
-void tarea1(void *p)
+void vTarea1(void *p)
 {
    while (1)
    {
@@ -59,7 +57,7 @@ void tarea1(void *p)
    }
 }
 
-void tarea2(void *p)
+void vTarea2(void *p)
 {
    TickType_t xLastWakeTime = xTaskGetTickCount(); // Iniciar contador de ticks
    while (1)

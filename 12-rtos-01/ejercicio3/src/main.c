@@ -25,10 +25,10 @@ BOARD: EDU CIAA
 #define LED_VERDE 5
 
 // Prototipos de funciones
-void tarea1(void *p);
-void tarea2(void *p);
+void vTarea1(void *p);
+void vTarea2(void *p);
 
-TaskHandle_t tarea2_handle;
+TaskHandle_t xTarea2Handle;
 
 // Funcion principal
 int main(void)
@@ -36,8 +36,8 @@ int main(void)
    printf("Ejercicio 3 - RTOS 1\r\n");
 
    // Crear tareas
-   xTaskCreate(tarea1, (const char *)"tarea1", configMINIMAL_STACK_SIZE * 2, NULL, TAREA1_PRIORIDAD, NULL);
-   xTaskCreate(tarea2, "Tarea2", configMINIMAL_STACK_SIZE, NULL, TAREA2_PRIORIDAD, &tarea2_handle);
+   xTaskCreate(vTarea1, (const char *)"tarea1", configMINIMAL_STACK_SIZE, NULL, TAREA1_PRIORIDAD, NULL);
+   xTaskCreate(vTarea2, "Tarea2", configMINIMAL_STACK_SIZE, NULL, TAREA2_PRIORIDAD, &xTarea2Handle);
 
    // Iniciar scheduler
    vTaskStartScheduler();
@@ -53,17 +53,17 @@ int main(void)
 }
 
 // Implementacion de funciones
-void tarea1(void *p)
+void vTarea1(void *p)
 {
    while (1)
    {
       printf("GPIO_0 a GPIO_3 en binario: %d%d%d%d\r\n", Board_GPIO_GetStatus(BOARD_GPIO_0), Board_GPIO_GetStatus(BOARD_GPIO_1), Board_GPIO_GetStatus(BOARD_GPIO_2), Board_GPIO_GetStatus(BOARD_GPIO_3));
       vTaskDelay(pdMS_TO_TICKS(100));
-      vTaskPrioritySet(tarea2_handle, TAREA2_PRIORIDAD + 1);
+      vTaskPrioritySet(xTarea2Handle, TAREA2_PRIORIDAD + 1);
    }
 }
 
-void tarea2(void *p)
+void vTarea2(void *p)
 {
    while (1)
    {

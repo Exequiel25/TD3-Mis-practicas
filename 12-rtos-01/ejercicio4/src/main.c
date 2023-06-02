@@ -25,11 +25,8 @@ BOARD: EDU CIAA
 // LED a prender
 #define LED_AZUL 2
 
-// Task Handlers
-TaskHandle_t tarea1_handle, tarea2_handle;
-
 // Prototipos de funciones
-void tarea(void *p);
+void vTarea(void *p);
 void vApplicationIdleHook(void);
 
 // Funcion principal
@@ -38,8 +35,8 @@ int main(void)
    printf("Ejercicio 4 - RTOS 1\r\n");
 
    // Crear tareas
-   xTaskCreate(tarea, (const char *)"tarea1", configMINIMAL_STACK_SIZE * 2, NULL, TAREA1_PRIORIDAD, &tarea1_handle);
-   xTaskCreate(tarea, (const char *)"tarea2", configMINIMAL_STACK_SIZE * 2, NULL, TAREA2_PRIORIDAD, &tarea2_handle);
+   xTaskCreate(vTarea, (const char *)"tarea1", configMINIMAL_STACK_SIZE, NULL, TAREA1_PRIORIDAD, NULL);
+   xTaskCreate(vTarea, (const char *)"tarea2", configMINIMAL_STACK_SIZE, NULL, TAREA2_PRIORIDAD, NULL);
 
    // Iniciar scheduler
    vTaskStartScheduler();
@@ -48,14 +45,12 @@ int main(void)
    while (1)
    {
    }
-   // NO DEBE LLEGAR NUNCA AQUI, debido a que a este programa se ejecuta
-   // directamenteno sobre un microcontrolador y no es llamado por ningun
-   // Sistema Operativo, como en el caso de un programa para PC.
+   // NO DEBE LLEGAR NUNCA AQUI
    return 0;
 }
 
 // Implementacion de funciones
-void tarea(void *p)
+void vTarea(void *p)
 {
    while (1)
    {
