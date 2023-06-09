@@ -69,7 +69,7 @@ int main(void)
    );
 
    // Crear cola de mensajes
-   xCola = xQueueCreate(1, sizeof(uint32_t));
+   xCola = xQueueCreate(10, sizeof(uint32_t));
 
    // Iniciar scheduler
    vTaskStartScheduler();
