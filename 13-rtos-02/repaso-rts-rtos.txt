@@ -1,0 +1,35 @@
+RTS con procesamiento secuencial:
+    Si se necesita un período de muestreo (Ts) determinado, se adiciona un timer y una tarea, siempre que Ts sea menor al tiempo que demoran las tareas que componen el bucle.
+    En caso que una tarea del bucle con periodo mayor a Ts y tiempo de ejecución largo, es posible dividirla en dos o más, para que se cumpla el Ts.
+
+    Los algoritmos de supervisión se ejecutan con periodos generalmente mayores a los algoritmos de control.
+    En el nivel de software interface de usuario, no hay restricciones temporales estrictas.
+
+Implementación foreground y background.
+La latencia en los RTS dependerá de la rutina de atención a interrupciones.
+Si los datos entre foreground y background se comparten, entonces es probable que ocurra problemas de concurrencia.
+El determinismo en RTS es poder cumplir de manera predecible requisitos temporales, no necesariamente son los más rápidos.
+
+RTOS no apropiativos:
+Tienen mayor latencia en tareas foreground que los apropiativos.
+
+Inversión de prioridades:
+    Puede ocurrir con dos tareas de != prioridades pero que comparten un semaforo binario o una cola de mensajes.
+    Cuando la inversión ocurre, aumenta la latencia de la tarea con mayor prioridad.
+
+RTOS expropiativos:
+    El uso correcto de semáforos o colas de mensaje permite evitar problemas de concurrencia.
+    Permite disminuir el tiempo de latencia de foreground respecto a los RTOS no apropiativos.
+
+Un RTOS no expropiativo puede tener concurrencia sólo si se comparten datos en atención a interrupciones y foreground.
+Un sistema background/foreground disminuye la latencia de las tareas background respecto de un scan loop.
+Un RTOS expropiativo respecto a un RTOS no expropiativo disminuye la latencia de foreground.
+Un sistema scan loop tiene el mayor rendimiento.
+
+En FreeRTOS se puede asignar prioridad a las tareas. Entonces si:
+    La tarea B que es más prioritaria que A se pasa a estado listo, no es necesario esperar el quantum para realizar la conmutación y ejecutar la tarea B.
+    La tarea B que es de igual prioridad que A se pasa a estado listo, se debe esperar el quantum o que A se bloquee para realizar la conmutación y ejecutar la tarea B.
+
+Las ISR no deben invocar a funciones del RTOS que conmuten de tareas.
+
+Es verdadero que las tareas en estado Running de FreeRTOS solo pueden pasar a estado Ready si hay una tarea de mayor prioridad en estado Ready, o hay otra tarea de igual prioridad y se acabó el quantum de tiempo.

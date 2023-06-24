@@ -1,0 +1,26 @@
+Planificación de procesos: Si se quiere tener más de un proceso en memoria a la vez, se necesita un planificador que realice la asignación de recursos.
+
+Fair-Share:
+    expropiativo
+    proporcional para usuarios
+
+Round-Robin:
+    equitativo
+    no necesita tareas disponibles al inicio
+    si termina el quantum de la tarea, se coloca al inicio de la FIFO
+    No usa técnicas de envejecimiento.
+
+Shortest Process Next:
+    Usa una aproximación basada en registración del comportamiento anterior.
+    Es facil de implementar, sumando el nuevo valor a la estimación actual y desplazando un bit a la derecha.
+    No es necesario tener todos los procesos en tiempo inicial
+
+Shortest Remaining Time Next:
+    Es la versión expropiativa de shortest job first.
+    Se debe conocer de antemano el tiempo de ejecución de los trabajos.
+    Favorece la ejecución de tareas cortas.
+
+Planificación por prioridad con múltiples colas:
+    Cuando los procesos se convierten interactivos, se les asigna la mayor prioridad.
+    Disminuye la cantidad de cambios de contexto.
+    Se asigna distinta cantidad de quantums a cada nivel de prioridad.

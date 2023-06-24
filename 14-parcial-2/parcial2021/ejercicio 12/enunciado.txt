@@ -1,0 +1,24 @@
+ENUNCIADO
+Modifique el archivo padre.c para que reciba del proceso hijo 3 caracteres mediante la cola de mensajes declarada como MQ_PATH y los
+imprima por consola.
+El padre debe abrir la cola de mensajes MQ_PATH en modo de solo escritura/lectura con los parámetros indicados por la variable attr. Se
+recomienda que el padre elimine la cola de mensajes luego de leer el mensaje enviado por el proceso hijo.
+El proceso hijo recibe como parámetro la variable mqd. Escribe en la cola de mensaje 3 caracteres y cierra la cola de mensaje. Luego de
+realizar estas acciones, escribe por consola los siguientes mensajes de confirmación:
+Hijo en ejecucion...
+Hijo: mensaje enviado.
+Hijo: cola de mensajes cerrada.
+PASOS A SEGUIR
+1) Descargue los siguientes 2 archivos en un mismo directorio:
+1.a) Código fuente del proceso padre:
+padre.c : https://nube.ingenieria.uncuyo.edu.ar/s/5WnAqmncswdASWQ
+1.b) Archivo objeto del proceso hijo para arquitectura de 64 bits:
+hijo.o : https://nube.ingenieria.uncuyo.edu.ar/s/mcLnwrPaQg7PFNf
+2) Complete el archivo padre.c. El padre debe abrir la cola de mensajes MQ_PATH en modo de solo escritura/lectura con los parámetros
+indicados por la variable attr.
+3) Copiar y pegar en consola el siguiente comando para compilar ambos archivos:
+gcc -c padre.c -lrt && gcc hijo.o padre.o -o padre -lrt
+4) El binario generado por el comando anterior se ejecuta en consola con:
+./padre
+5) Luego que el proceso padre reciba los 3 caracteres los debe imprimir por consola:
+XXX

@@ -30,6 +30,12 @@ int main()
 
    // crea un hilo
    rc = pthread_create(&hilo[0], /*attr*/ NULL, /*start routine*/ hola, /*arg*/ (void *)(&t));
+   /*
+   Configurar el tamaño de stack y la prioridad del hilo en el segundo argumento de la llamada.
+   Si la creación es exitosa, el hilo ejecuta la función indicada como tercer argumento.
+   Si la creación del hilo no es exitosa, retorna el número de error.
+   Si no hubo error, almacena en un buffer indicado por el primer argumento el TID
+   */
 
    if (rc != 0)
    {
@@ -41,6 +47,9 @@ int main()
    printf("Espera a que termine hilo\n");
 
    pthread_join(hilo[0], NULL);
+   /*
+   Espera a que termine el hilo indicado en el primer argumento.
+   */
 
    printf("Termina hilo main\n");
 

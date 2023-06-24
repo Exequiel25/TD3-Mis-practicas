@@ -1,0 +1,23 @@
+Los hilos se ejecutan de forma separada pero sus recursos son compartidos. En sistemas con multiprocesadores, la ejecución es más rápida (cada núcleo ejecuta un hilo)
+Ante un error en tiempo de ejecución en el código del hilo, se termina el proceso al que perternece el hilo.
+
+Los recursos que comparten son:
+    Espacio de direcciones
+    Heap (pila)
+    Memoria de programa
+    Señales y manejadores de señales
+    Variables globales
+
+No comparten pila privada (variables locales)
+
+Deadlock (o abrazo mortal)
+En sistemas operativos, se debe a un bloqueo mutuo.
+Las condiciones para que esto se de son:
+    Exclusión mutua
+    Espera circular (problema de la cena de los filósofos)
+    No hay expropiación de los eventos
+
+multi threading
+En la implementación de hilos de manera híbrida cada hilo de nivel kernel tiene algún conjunto de hilos de nivel usuario.
+En la implementación de hilos modo kernel cuando un hilo se bloquea, no bloquea al resto de los hilos del proceso.
+En la implementación de hilos en modo usuario la creación de nuevos hilos es mas rápida.
