@@ -26,8 +26,8 @@ if [ -f output ]; then
 fi
 
 # Eliminar el archivo stdout creado en el 2do ejercicio de manejo de flujo
-if [ -f stdout ]; then
-    rm stdout
+if [ -f stdout.txt ]; then
+    rm stdout.txt
     echo "Archivo 'stdout' eliminado"
 fi
 
