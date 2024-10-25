@@ -25,12 +25,6 @@ int32_t truncation(int64_t X)
     return (int32_t)(X >> Q21_10);
 }
 
-// Redondeo al valor más cercano
-int32_t rounding(int64_t X)
-{
-    return (int32_t)((X + (1 << (Q21_10 - 1))) >> Q21_10);
-}
-
 int main()
 {
     // Vectores en punto flotante
@@ -45,7 +39,7 @@ int main()
         Y_fx[i] = fp2fx(Y[i], Q21_10);
     }
 
-    // Operación MAC con redondeo por truncamiento antes de sumar
+    // Operación MAC con truncamiento antes de sumar todos los productos
     int32_t acum_32a = 0;
     for (int i = 0; i < 5; i++)
     {
@@ -53,14 +47,14 @@ int main()
         acum_32a += truncation(product);
     }
 
-    // Operación MAC con redondeo después de sumar todos los productos
+    // Operación MAC con truncamiento después de sumar todos los productos
     int64_t acum_64 = 0;
     for (int i = 0; i < 5; i++)
     {
         int64_t product = (int64_t)X_fx[i] * Y_fx[i];
         acum_64 += product;
     }
-    int32_t acum_32b = rounding(acum_64);
+    int32_t acum_32b = truncation(acum_64);
 
     // Operación MAC en punto flotante
     double acum_db = 0.0;
@@ -76,9 +70,9 @@ int main()
     // Imprimir resultados
     printf("Resultado MAC en punto flotante: %.10f\n", acum_db);
     printf("Resultado MAC con truncamiento antes de sumar (Q21.10): %.10f\n", acum_32a_fp);
-    printf("Resultado MAC con redondeo después de sumar (Q21.10): %.10f\n", acum_32b_fp);
-    printf("Diferencia con truncamiento: %.10f\n", fabs(acum_db - acum_32a_fp));
-    printf("Diferencia con redondeo: %.10f\n", fabs(acum_db - acum_32b_fp));
+    printf("Resultado MAC con truncamiento después de sumar (Q21.10): %.10f\n", acum_32b_fp);
+    printf("Diferencia con truncamiento por suma: %.10f\n", fabs(acum_db - acum_32a_fp));
+    printf("Diferencia con truncamiento después de acumular: %.10f\n", fabs(acum_db - acum_32b_fp));
 
     return 0;
 }
