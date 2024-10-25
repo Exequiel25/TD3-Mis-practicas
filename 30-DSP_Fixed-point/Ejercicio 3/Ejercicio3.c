@@ -25,9 +25,18 @@ int32_t truncation(int64_t X)
 }
 
 // Redondeo al valor más cercano
+/*
 int32_t rounding(int64_t X)
 {
     return (int32_t)((X + (1 << (Q21_10 - 1))) >> Q21_10);
+}
+*/
+
+// Generico
+int32_t rounding(int64_t X)
+{
+    half = 1LL << 1;
+    return (int32_t)((X + (1 << );
 }
 
 int main(int argc, char *argv[])
