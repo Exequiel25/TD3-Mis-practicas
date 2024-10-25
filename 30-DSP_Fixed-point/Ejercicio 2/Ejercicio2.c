@@ -8,15 +8,15 @@
 #define Q21_10 10
 
 // Convertidor de punto fijo a punto flotante
-double fx2fp(int32_t punto_fijo, int bits)
+double fx2fp(int32_t punto_fijo, int frac_bits)
 {
-    return punto_fijo / (double)(1 << bits);
+    return punto_fijo / (double)(1 << frac_bits);
 }
 
 // Convertidor de punto flotante a punto fijo
-int32_t fp2fx(double floating_point, int bits)
+int32_t fp2fx(double floating_point, int frac_bits)
 {
-    return (int32_t)(floating_point * (1 << bits));
+    return (int32_t)(floating_point * (1 << frac_bits));
 }
 
 int main(int argc, char const *argv[])
