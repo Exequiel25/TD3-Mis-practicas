@@ -2,7 +2,7 @@
 # Código en C
 
 # Si los archivos no se encuentran en la carpeta, los descarga
-. ../descargar_archivos.sh
+. ../../descargar_archivos.sh
 check_and_download "proc_01.c" "https://github.com/td3-frm/practica/raw/master/03-procesos/proc_01.c"
 
 # Compila el código si no existe el ejecutable
